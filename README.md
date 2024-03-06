@@ -1,4 +1,4 @@
-# cros-spring-java-school-2024-homework
+# croс-spring-java-school-2024-homework
 
 ## Контакты
 
