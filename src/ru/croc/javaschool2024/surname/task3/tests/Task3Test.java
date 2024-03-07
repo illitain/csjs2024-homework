@@ -9,7 +9,7 @@ import java.io.PrintStream;
 public class Task3Test {
 
     private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
 
     @Test
     private void testSum() {
@@ -20,9 +20,11 @@ public class Task3Test {
     }
 
     private void testOneSum(String startElem, String diff, String amount, String expected) {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         Task3.main(new String[]{startElem, diff, amount});
         String res = outputStreamCaptor.toString().trim();
         assert res.equals(expected);
+        System.setOut(standardOut);
     }
 }

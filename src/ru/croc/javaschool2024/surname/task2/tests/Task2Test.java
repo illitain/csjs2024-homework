@@ -8,7 +8,7 @@ import java.io.PrintStream;
 
 public class Task2Test {
     private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
 
     @Test
     public void byteFormattingTest() {
@@ -19,9 +19,12 @@ public class Task2Test {
     }
 
     private void byteFormattingTest(String input, String expected) {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
-        Task2.main(new String[]{input});
-        assert  outputStreamCaptor.toString().trim().equals(expected);
+        Task2.main(new String[] {input});
+        String output = outputStreamCaptor.toString().trim();
+        assert  output.equals(expected);
+        System.setOut(standardOut);
     }
 
 
