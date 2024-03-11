@@ -8,6 +8,7 @@
   - https://github.com/evoynov
 - Андрей   
   - https://t.me/Dfire1210 
+  - https://github.com/Dfire
 - Полина   
   - https://t.me/ppuzak
   - https://github.com/ppuzak
