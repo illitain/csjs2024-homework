@@ -15,6 +15,9 @@
 - Денис    
   - https://t.me/illitain       
   - https://github.com/illitain
+- Дима
+  - https://t.me/MAK42
+  - https://github.com/mak-42
 
 
 
