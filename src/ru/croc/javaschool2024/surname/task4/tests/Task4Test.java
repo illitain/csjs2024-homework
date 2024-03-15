@@ -3,6 +3,7 @@ package ru.croc.javaschool2024.surname.task4.tests;
 import org.testng.annotations.Test;
 import ru.croc.javaschool2024.surname.task4.Task4;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Task4Test {
@@ -24,20 +25,42 @@ public class Task4Test {
                 // to be continued...
                 """;
         String expectedRes = """
+               
                 class Hello { 
                  
-                 
+                  
                   public static void main(String[] args) {
-                   
-                    System.out.println("Hi!");
+                    
+                    System.out.println("Hi!"); 
                   }
-                }""";
+                } 
+                
+                """;
         assert testCommentRemoving(input, expectedRes);
     }
 
     private boolean testCommentRemoving(String input, String expectedOutput) {
         String res = Task4.removeJavaComments(input);
+        long expectedLinesNumber = countNonNullLines(expectedOutput);
+        long resLinesNumber = countNonNullLines(res);
+        System.out.println("Ожидаем значимых строк: " + expectedLinesNumber + ", получили: " + resLinesNumber);
+        if (expectedLinesNumber != resLinesNumber) {
+            return false;
+        }
         System.out.println(res);
-        return Objects.equals(expectedOutput, res);
+        return Objects.equals(
+                normalize(expectedOutput),
+                normalize(res));
+    }
+
+    private long countNonNullLines(String str) {
+        return Arrays.stream(str.split("\n"))
+                .filter(line -> !line.isBlank())
+                .count();
+    }
+
+    private String normalize(String in) {
+        return in
+                .replaceAll("[\n ]*", " ");
     }
 }

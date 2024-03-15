@@ -23,11 +23,12 @@ class Hello { // class body starts here
   }
 } // the end
 // to be continued...
-
 ```
+
 Результат
 ```
-class Hello {  
+
+class Hello { 
   
   
   public static void main(String[] args) {
@@ -35,4 +36,5 @@ class Hello {
     System.out.println("Hi!"); 
   }
 } 
+
 ``` 
