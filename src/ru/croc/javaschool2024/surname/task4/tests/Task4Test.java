@@ -39,6 +39,56 @@ public class Task4Test {
         assert testCommentRemoving(input, expectedRes);
     }
 
+    @Test
+    public void commentsAtStringTest() {
+        String input = """
+                class Hello { // class body starts here
+                 
+                  /* main method */
+                  public static void main(String[] args/* we put command line arguments here*/) {
+                    // this line prints my first greeting to the screen
+                    System.out.println("Hi!//"); // :)
+                    String someStr = "/* *//";
+                    String otherStr = "/* //*/";
+                  }
+                }""";
+        String expectedRes ="""
+                class Hello {
+                                  
+                  public static void main(String[] args) {
+                    System.out.println("Hi!//");
+                    String someStr = "/* *//";
+                    String otherStr = "/* //*/";
+                  }
+                }""";
+
+        assert testCommentRemoving(input, expectedRes);
+
+    }
+
+    @Test
+    public void commentAtCommentTest() {
+        String input = """
+                class Hello { // class body starts here
+                 
+                  /* //*/
+                  public static void main(String[] args/* we put command line arguments here*/) {
+                    // this line prints my first greeting to the screen
+                    System.out.println("Hi!//"); // :)
+                  }
+                }""";
+        String expectedRes ="""
+                class Hello {
+                                  
+                  public static void main(String[] args) {
+                    System.out.println("Hi!//");
+                  }
+                }""";
+
+        assert testCommentRemoving(input, expectedRes);
+
+    }
+
     private boolean testCommentRemoving(String input, String expectedOutput) {
         String res = Task4.removeJavaComments(input);
         long expectedLinesNumber = countNonNullLines(expectedOutput);
