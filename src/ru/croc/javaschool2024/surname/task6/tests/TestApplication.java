@@ -31,6 +31,7 @@ public class TestApplication {
      */
     protected void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor, true, UTF_8));
+        outputStreamCaptor.reset();
     }
 
     /**
